@@ -1,4 +1,4 @@
-module logs
+module github.com/qcdong2016/logs
 
 go 1.13
 
