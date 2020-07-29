@@ -49,3 +49,7 @@ func main() {
 }
 
 ```
+
+Preview
+
+![preview](./examples/preview.png)
