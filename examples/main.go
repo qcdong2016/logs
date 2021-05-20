@@ -1,29 +1,11 @@
 package main
 
 import (
-	"logs"
 	"os"
 
 	"github.com/gookit/color"
+	"github.com/qcdong2016/logs"
 )
-
-func ColorSelect(lv logs.Level) logs.ColorFunc {
-	switch lv {
-	case logs.LevelDebug:
-		return color.Blue.Render
-	case logs.LevelInfo:
-		return color.Green.Render
-	case logs.LevelWarn:
-		return color.Yellow.Render
-	case logs.LevelError:
-		return color.Red.Render
-	case logs.LevelFatal:
-		return color.Red.Render
-	case logs.LevelPanic:
-		return color.Red.Render
-	}
-	return color.Yellow.Render
-}
 
 func main() {
 	l := logs.NewLogger(
@@ -31,9 +13,10 @@ func main() {
 	)
 
 	l.Use(
-		logs.PartLevelColor(ColorSelect, logs.PartLayout("%-6s", logs.PartLevel())),
+		logs.PartLevel(),
 		logs.PartCaller(2, true),
-		logs.PartTime("2006-01-02-15:04:05"),
+		logs.PartDate("2006-01-02"),
+		logs.PartTime("15:04:05"),
 		logs.PartColor(color.Blue.Render, logs.PartMessage()),
 	)
 	l.Log(logs.LevelDebug, "hello%d,%d", 123, 456)

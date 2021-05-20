@@ -2,66 +2,56 @@ package logs
 
 var DefaultLogger = NewLogger().Use(
 	PartLevel(),
-	PartTime("2006-01-02-15:04:05"),
-	PartCaller(3, true),
+	PartDate("2006-01-02"),
+	PartTime("15:04:05"),
+	PartCaller(4, true),
 	PartMessage(),
 )
 
-type Level int8
-
-const (
-	LevelDebug Level = iota
-	LevelInfo
-	LevelWarn
-	LevelError
-	LevelFatal
-	LevelPanic
-)
-
 func Debug(i ...interface{}) {
-	DefaultLogger.Log(LevelDebug, "", i...)
+	DefaultLogger.Debug(i...)
 }
 
 func Debugf(format string, i ...interface{}) {
-	DefaultLogger.Log(LevelDebug, format, i...)
+	DefaultLogger.Debugf(format, i...)
 }
 
 func Info(i ...interface{}) {
-	DefaultLogger.Log(LevelInfo, "", i...)
+	DefaultLogger.Info(i...)
 }
 
 func Infof(format string, i ...interface{}) {
-	DefaultLogger.Log(LevelInfo, format, i...)
+	DefaultLogger.Infof(format, i...)
 }
 
 func Warn(i ...interface{}) {
-	DefaultLogger.Log(LevelWarn, "", i...)
+	DefaultLogger.Warn(i...)
 }
 
 func Warnf(format string, i ...interface{}) {
-	DefaultLogger.Log(LevelWarn, format, i...)
+	DefaultLogger.Warnf(format, i...)
 }
 
 func Error(i ...interface{}) {
-	DefaultLogger.Log(LevelError, "", i...)
+	DefaultLogger.Error(i...)
 }
 
 func Errorf(format string, i ...interface{}) {
-	DefaultLogger.Log(LevelError, format, i...)
+	DefaultLogger.Errorf(format, i...)
 }
 
 func Fatal(i ...interface{}) {
-	DefaultLogger.Log(LevelFatal, "", i...)
+	DefaultLogger.Fatal(i...)
 }
 
 func Fatalf(format string, i ...interface{}) {
-	DefaultLogger.Log(LevelFatal, format, i...)
+	DefaultLogger.Fatalf(format, i...)
 }
 
 func Panic(i ...interface{}) {
-	DefaultLogger.Log(LevelPanic, "", i...)
+	DefaultLogger.Panic(i...)
 }
 
 func Panicf(format string, i ...interface{}) {
-	DefaultLogger.Log(LevelPanic, format, i...)
+	DefaultLogger.Panicf(format, i...)
 }

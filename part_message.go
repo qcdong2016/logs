@@ -8,7 +8,7 @@ import (
 type partMessage struct {
 }
 
-func PartMessage() IPart {
+func PartMessage() *partMessage {
 	return &partMessage{}
 }
 

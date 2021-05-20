@@ -7,7 +7,7 @@ type partLayout struct {
 	part   IPart
 }
 
-func PartLayout(layout string, part IPart) IPart {
+func PartLayout(layout string, part IPart) *partLayout {
 	return &partLayout{layout: layout, part: part}
 }
 

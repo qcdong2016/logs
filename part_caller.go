@@ -11,7 +11,7 @@ type partCaller struct {
 	shortFile bool
 }
 
-func PartCaller(skip int, shortFile bool) IPart {
+func PartCaller(skip int, shortFile bool) *partCaller {
 	return &partCaller{skip: skip, shortFile: shortFile}
 }
 

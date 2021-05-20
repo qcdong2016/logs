@@ -1,9 +1,20 @@
 package logs
 
+type Level int8
+
+const (
+	LevelDebug Level = iota
+	LevelInfo
+	LevelWarn
+	LevelError
+	LevelFatal
+	LevelPanic
+)
+
 type partLevel struct {
 }
 
-func PartLevel() IPart {
+func PartLevel() *partLevel {
 	return &partLevel{}
 }
 
@@ -11,17 +22,17 @@ func (p *partLevel) Output(l *Logger, args *Args) string {
 
 	switch args.Level {
 	case LevelDebug:
-		return "DEBUG"
+		return "DBG"
 	case LevelInfo:
-		return "INFO"
+		return "INF"
 	case LevelWarn:
-		return "WARN"
+		return "WAN"
 	case LevelError:
-		return "ERROR"
+		return "ERR"
 	case LevelFatal:
-		return "FATAL"
+		return "FTL"
 	case LevelPanic:
-		return "PANIC"
+		return "PNC"
 	}
 
 	return ""

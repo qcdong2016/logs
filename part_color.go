@@ -7,7 +7,7 @@ type partColor struct {
 	part    IPart
 }
 
-func PartColor(fn ColorFunc, part IPart) IPart {
+func PartColor(fn ColorFunc, part IPart) *partColor {
 	return &partColor{colorfn: fn, part: part}
 }
 

@@ -4,12 +4,14 @@ import (
 	"bytes"
 	"io"
 	"os"
+	"time"
 )
 
 type Args struct {
 	Level  Level
 	Format string
 	Args   []interface{}
+	Time   time.Time
 }
 
 type IPart interface {
@@ -46,6 +48,7 @@ func (l *Logger) Log(level Level, format string, args ...interface{}) {
 		Level:  level,
 		Format: format,
 		Args:   args,
+		Time:   time.Now(),
 	}
 
 	buf := &bytes.Buffer{}
@@ -57,4 +60,52 @@ func (l *Logger) Log(level Level, format string, args ...interface{}) {
 	buf.WriteByte('\n')
 
 	l.output.Write(buf.Bytes())
+}
+
+func (l *Logger) Debug(i ...interface{}) {
+	l.Log(LevelDebug, "", i...)
+}
+
+func (l *Logger) Debugf(format string, i ...interface{}) {
+	l.Log(LevelDebug, format, i...)
+}
+
+func (l *Logger) Info(i ...interface{}) {
+	l.Log(LevelInfo, "", i...)
+}
+
+func (l *Logger) Infof(format string, i ...interface{}) {
+	l.Log(LevelInfo, format, i...)
+}
+
+func (l *Logger) Warn(i ...interface{}) {
+	l.Log(LevelWarn, "", i...)
+}
+
+func (l *Logger) Warnf(format string, i ...interface{}) {
+	l.Log(LevelWarn, format, i...)
+}
+
+func (l *Logger) Error(i ...interface{}) {
+	l.Log(LevelError, "", i...)
+}
+
+func (l *Logger) Errorf(format string, i ...interface{}) {
+	l.Log(LevelError, format, i...)
+}
+
+func (l *Logger) Fatal(i ...interface{}) {
+	l.Log(LevelFatal, "", i...)
+}
+
+func (l *Logger) Fatalf(format string, i ...interface{}) {
+	l.Log(LevelFatal, format, i...)
+}
+
+func (l *Logger) Panic(i ...interface{}) {
+	l.Log(LevelPanic, "", i...)
+}
+
+func (l *Logger) Panicf(format string, i ...interface{}) {
+	l.Log(LevelPanic, format, i...)
 }
